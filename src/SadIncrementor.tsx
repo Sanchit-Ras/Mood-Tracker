@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { sadButtonClicked } from './actions';
 
 type SadIncrementorProps={}
-const SadIncrementor:FC<SadIncrementorProps>=(props)=>{
+const SadIncrementor:FC<SadIncrementorProps>=()=>{
     const dispatch=useDispatch();
     function increment(){
         dispatch(sadButtonClicked);

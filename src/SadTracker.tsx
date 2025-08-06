@@ -5,7 +5,7 @@ import { SadCountSelector } from './selectors';
 type SadTrackerProps={
 
 }
-const SadTracker:FC<SadTrackerProps>=(props)=>{
+const SadTracker:FC<SadTrackerProps>=()=>{
     const sadCount=useSelector(SadCountSelector);
 
     return(

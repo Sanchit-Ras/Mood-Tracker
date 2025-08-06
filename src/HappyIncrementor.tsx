@@ -5,7 +5,7 @@ import { happyButtonClicked } from './actions';
 type HappyIncrementorProps={
 
 }
-const HappyIncrementor:FC<HappyIncrementorProps>=(props)=>{
+const HappyIncrementor:FC<HappyIncrementorProps>=()=>{
     const dispatch=useDispatch();
     function increment(){
         dispatch(happyButtonClicked);
