@@ -1,18 +1,29 @@
-import { createStore, type Action } from "redux";
+import { createStore, type AnyAction } from "redux";
+import { CLEAR_BUTTON_CLICKED, HAPPY_BUTTON_CLICKED, SAD_BUTTON_CLICKED } from "./actions";
+
+type Moment={
+    intensity:number;
+    time:Date
+}
 
 export type State={
-    happyCount:number;
-    sadCount:number
+    happyMoments:Moment[];
+    sadMoments:Moment[]
 };
 const initialState={
-    happyCount:0,
-    sadCount:0
+    happyMoments:[],
+    sadMoments:[]
 }
-function reducer(currentState: State=initialState, action:Action): State{
-    if(action.type==="happy button clicked"){
-        return {...currentState,happyCount:currentState.happyCount+1};
-    }else if(action.type==="sad button clicked"){
-        return {...currentState,sadCount:currentState.sadCount+1};
+//reducer should be non mutating and pure function
+//we were using new Date()->the function was not pure (return {...currentState,happyMoments:[...currentState.happyMoments,{intensity:action.payload,time:new Date()}]};)
+//now action object has the date in payload->reducer function is pure
+function reducer(currentState: State=initialState, action:AnyAction): State{
+    if(action.type===HAPPY_BUTTON_CLICKED){
+        return {...currentState,happyMoments:[...currentState.happyMoments,{intensity:action.payload.value,time:action.payload.date}]};
+    }else if(action.type===SAD_BUTTON_CLICKED){
+        return {...currentState,sadMoments:[...currentState.sadMoments,{intensity:action.payload.value,time:action.payload.date}]};
+    }else if(action.type===CLEAR_BUTTON_CLICKED){
+        return {happyMoments:[],sadMoments:[]}
     }
     return currentState;
 }

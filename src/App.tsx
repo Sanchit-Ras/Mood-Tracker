@@ -2,6 +2,7 @@ import HappyTracker from './HappyTracker'
 import HappyIncrementor from './HappyIncrementor'
 import SadTracker from './SadTracker'
 import SadIncrementor from './SadIncrementor'
+import { ClearButton } from './ClearButton'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <SadTracker/>
       <HappyIncrementor/>
       <SadIncrementor/>
+      <ClearButton/>
     </>
   )
 }

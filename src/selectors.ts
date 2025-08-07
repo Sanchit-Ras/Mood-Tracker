@@ -1,7 +1,7 @@
 import type { State } from "./store"
-export function happyCountSelector(State:State){
-    return State.happyCount;
+export function happyMomentsSelector(State:State){
+    return State.happyMoments;
 }
-export function SadCountSelector(State:State){
-    return State.sadCount;
+export function SadMomentsSelector(State:State){
+    return State.sadMoments;
 }

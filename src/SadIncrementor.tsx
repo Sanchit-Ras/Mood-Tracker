@@ -1,17 +1,19 @@
-import {type FC} from 'react';
+import {useState, type FC} from 'react';
 import { useDispatch } from 'react-redux';
 import { sadButtonClicked } from './actions';
 
 type SadIncrementorProps={}
 const SadIncrementor:FC<SadIncrementorProps>=()=>{
+    const[sadnessLevel,setSadnessLevel]=useState(0);
     const dispatch=useDispatch();
     function increment(){
-        dispatch(sadButtonClicked);
+        dispatch(sadButtonClicked(sadnessLevel,new Date()));
     }
     return(
         <div className='m-4 font-bold'>
-            <h3>Are you sad?</h3>
-            <button className='bg-blue-500 p-3' onClick={increment}>Yes</button>
+            <h3>How sad are you?</h3>
+            <input type="text" value={sadnessLevel} className='border-2 border-blue-500 rounded-md' onChange={(event)=>{setSadnessLevel(+event.target.value)}}/>
+            <button className='bg-blue-500 p-3 ml-2' onClick={increment}>Yes</button>
         </div>
     );
 }

@@ -1,17 +1,22 @@
-import {type FC} from 'react';
+import { type FC } from 'react';
 import { useSelector } from 'react-redux';
-import { SadCountSelector } from './selectors';
+import {SadMomentsSelector } from './selectors';
 
-type SadTrackerProps={
+type SadTrackerProps = {
 
 }
-const SadTracker:FC<SadTrackerProps>=()=>{
-    const sadCount=useSelector(SadCountSelector);
+const SadTracker: FC<SadTrackerProps> = () => {
+    const sadMoments = useSelector(SadMomentsSelector);
 
-    return(
-        <div className='bg-blue-500 px-8 py-2 m-4'>
-            <h3 >You were sad {sadCount} times.</h3>
-        </div>
+    return (
+            <ul className='bg-blue-500 px-8 py-2 m-4'>
+                {sadMoments.map((moment) => (
+                    <li key={moment.time.toString()}>
+                        Sadness Level: {moment.intensity}, When: {moment.time.toString()}
+                    </li>
+                ))}
+            </ul>
+        
     );
 }
 export default SadTracker;
