@@ -1,7 +1,7 @@
 import { createStore, type AnyAction } from "redux";
-import { CLEAR_BUTTON_CLICKED, HAPPY_BUTTON_CLICKED, SAD_BUTTON_CLICKED } from "./actions";
 import happyReducer, { happyInitialState, type happyState } from "./reducers/happyReducer";
 import sadReducer, { sadInitialState, type sadState } from "./reducers/sadReducer";
+import { CLEAR_BUTTON_CLICKED } from "./actions";
 
 export type Moment={
     intensity:number;
@@ -20,6 +20,12 @@ const initialState:State={
 //we were using new Date()->the function was not pure (return {...currentState,happyMoments:[...currentState.happyMoments,{intensity:action.payload,time:new Date()}]};)
 //now action object has the date in payload->reducer function is pure
 function reducer(currentState=initialState, action:AnyAction): State{
+    if(action.type===CLEAR_BUTTON_CLICKED){
+        return {
+            happy:happyInitialState,
+            sad:sadInitialState
+        }
+    }
    return{
     happy:happyReducer(currentState.happy,action),
     sad:sadReducer(currentState.sad,action)
