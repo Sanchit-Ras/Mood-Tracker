@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { useSelector } from 'react-redux';
-import {SadMomentsSelector } from './selectors';
+import {SadMomentsSelector } from './selectors/selectors';
 
 type SadTrackerProps = {
 

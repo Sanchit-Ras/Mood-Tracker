@@ -1,6 +1,7 @@
 import type { AnyAction } from "redux";
 import type { Moment } from "../store";
-import { SAD_BUTTON_CLICKED } from "../actions";
+import { SAD_BUTTON_CLICKED } from "../actions/mood-actions";
+import { produce } from "immer";
 
 export type sadState={
     sadMoments:Moment[];
@@ -8,9 +9,11 @@ export type sadState={
 export const sadInitialState={
     sadMoments:[]
 }
-function sadReducer(currentState:sadState,action:AnyAction){
+function sadReducer(currentState:sadState=sadInitialState,action:AnyAction){
     if(action.type===SAD_BUTTON_CLICKED){
-        return {...currentState,sadMoments:[...currentState.sadMoments,{intensity:action.payload.value,time:action.payload.date}]};
+        return produce(currentState,(draft)=>{
+            draft.sadMoments.push(action.payload)
+        })
     }
     return currentState;
 }

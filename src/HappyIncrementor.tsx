@@ -1,6 +1,6 @@
 import {useState, type FC} from 'react';
 import { useDispatch } from 'react-redux';
-import { happyButtonClicked } from './actions';
+import { happyButtonClicked } from './actions/mood-actions';
 
 type HappyIncrementorProps={
 

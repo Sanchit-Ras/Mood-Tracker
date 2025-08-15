@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { useSelector } from 'react-redux';
-import { happyMomentsSelector } from './selectors';
+import { happyMomentsSelector } from './selectors/selectors';
 
 type HappyTrackerProps = {
 

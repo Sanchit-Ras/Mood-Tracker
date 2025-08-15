@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useDispatch } from "react-redux";
-import { clearButtonClicked } from "./actions";
+import { clearButtonClicked } from "./actions/mood-actions";
 
 export const ClearButton:FC=()=>{
     const dispatch=useDispatch();

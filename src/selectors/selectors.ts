@@ -1,4 +1,4 @@
-import type { State } from "./store"
+import type { State } from "../store"
 export function happyMomentsSelector(State:State){
     return State.happy.happyMoments;
 }

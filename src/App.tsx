@@ -1,18 +1,13 @@
-import HappyTracker from './HappyTracker'
-import HappyIncrementor from './HappyIncrementor'
-import SadTracker from './SadTracker'
-import SadIncrementor from './SadIncrementor'
-import { ClearButton } from './ClearButton'
+import { Route, Routes } from "react-router"
+import OrdersList from "./OrdersList"
+import OrderDetail from "./OrderDetailWithRedux"
 
 function App() {
   return (
-    <>
-      <HappyTracker/>
-      <SadTracker/>
-      <HappyIncrementor/>
-      <SadIncrementor/>
-      <ClearButton/>
-    </>
+    <Routes>
+      <Route index element={<OrdersList/>}/>
+      <Route path="/order/:orderId" element={<OrderDetail orderId={2}/>}/> {/* this component we are using is the output of connect HOC*/}
+    </Routes>
   )
 }
 
